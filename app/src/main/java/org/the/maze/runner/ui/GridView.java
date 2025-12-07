@@ -225,7 +225,6 @@ public class GridView {
                 while (x < (width - 1)) {
                     Node node = newGrid.getNode(x, y);
                     node.setVoid(true);
-                    node.setWeight(0);
                     x++;
                 }
 
@@ -250,7 +249,7 @@ public class GridView {
                 try {
                     int weight = Integer.parseInt(token.substring(1, token.length() - 1));
                     node.setWeight(weight);
-                    node.setWall(false);
+                    node.setVoid(false);
                 } catch (NumberFormatException e) {
                     System.err.println("Invalid weight token: " + token);
                     node.setWeight(1);

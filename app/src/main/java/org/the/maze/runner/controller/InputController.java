@@ -13,6 +13,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import org.the.maze.runner.App;
+import org.the.maze.runner.maze_generate.Maze;
+import org.the.maze.runner.maze_generate.MazeGenerator;
+import org.the.maze.runner.maze_generate.MazePrinter;
 import org.the.maze.runner.ui.GridView;
 
 public class InputController {
@@ -161,7 +164,14 @@ public class InputController {
     // Load maze by generate
     @FXML
     private void onGenerateMaze() {
-        loadInputText("generate");
+        System.out.println(
+                Integer.parseInt(mazeGenerateWidth.getText()) + "/" +
+                        Integer.parseInt(mazeGenerateHeight.getText()));
+        Maze maze = MazeGenerator.generate(
+                Integer.parseInt(mazeGenerateWidth.getText()),
+                Integer.parseInt(mazeGenerateHeight.getText()));
+
+        loadInputText(MazePrinter.toString(maze));
     }
 
     // Go back button to main page
